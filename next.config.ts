@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
             "worker-src 'self' blob: https://cdnjs.cloudflare.com",
             "connect-src 'self' https://api.openai.com",
             "img-src 'self' data:",
-            "font-src 'self'",
+            "font-src 'self' data:",
           ].join('; '),
         },
         { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains' },

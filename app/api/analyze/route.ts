@@ -96,7 +96,9 @@ export async function POST(request: Request) {
         process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '',
         process.env.NEXT_PUBLIC_SITE_URL || '',
       ].filter(Boolean);
-      if (!allowedOrigins.some((allowed) => origin.startsWith(allowed))) {
+      // Allow Vercel preview/production deployments (*.vercel.app)
+      const isVercelOrigin = origin.endsWith('.vercel.app');
+      if (!isVercelOrigin && !allowedOrigins.some((allowed) => origin.startsWith(allowed))) {
         return NextResponse.json(
           { success: false, error: 'Unauthorized origin.', code: 'INVALID_REQUEST' as const },
           { status: 403 }
