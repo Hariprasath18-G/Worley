@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Worley Design System - Light Theme
+   Tailwind v4 @theme Configuration
+   ============================================================ */
+
+@theme inline {
+  /* Brand — Worley official teal palette (from worley.com) */
+  --color-worley-dark: #00202a;        /* footer/deepest background */
+  --color-worley-navy: #00333B;        /* dark teal background */
+  --color-worley-mid-navy: #003645;    /* dark teal overlay */
+  --color-worley-light-navy: #025966;  /* primary brand color */
+
+  /* Accent — Worley teal spectrum */
+  --color-worley-teal-primary: #025966;  /* THE primary Worley brand color */
+  --color-worley-teal-light: #0B7B8B;   /* primary-70: secondary accent */
+  --color-worley-teal-bright: #1999AC;  /* primary-60: highlights */
+  --color-worley-teal-hover: #50CEE1;   /* primary-40: hover/active states */
+  --color-worley-teal-glow: #7BE4F4;    /* primary-30: focus rings */
+  --color-worley-teal-muted: #B0F3FE;   /* primary-20: subtle backgrounds */
+  --color-worley-teal-lightest: #EBFDFF; /* primary-10: lightest tint */
+
+  /* Primary accent aliases (mapped to teal for brand alignment) */
+  --color-worley-orange: #025966;
+  --color-worley-bright-orange: #0B7B8B;
+  --color-worley-orange-hover: #003645;
+  --color-worley-orange-active: #00333B;
+
+  /* Light Theme — Text */
+  --color-worley-white: #FFFFFF;
+  --color-worley-light-gray: #4a5568;     /* secondary text on light bg */
+  --color-worley-mid-gray: #718096;        /* muted text on light bg */
+  --color-worley-text-primary: #1a1a1a;    /* primary text */
+  --color-worley-text-secondary: #4a5568;  /* secondary text */
+  --color-worley-text-muted: #718096;      /* muted text */
+  --color-worley-footer-text: #e6ebed;     /* footer text (light on dark) */
+
+  /* Semantic */
+  --color-worley-teal: #0B7B8B;         /* positive/success */
+  --color-worley-red: #D04A3C;          /* risk/warning */
+  --color-worley-amber: #BA7517;        /* caution */
+
+  /* Light Theme — Surface */
+  --color-worley-surface: #F7FAFA;         /* subtle bg with light teal tint */
+  --color-worley-border: #E2E8F0;          /* card borders, dividers */
+  --color-worley-input-border: #CBD5E0;    /* input field borders */
+
+  /* Shadows — lighter for light theme */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-panel: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* Font family override */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================================
+   Base Styles — Light Theme
+   ============================================================ */
+
+body {
+  background-color: #FFFFFF;
+  color: var(--color-worley-text-primary);
+}
+
+/* ============================================================
+   Custom Animations
+   ============================================================ */
+
+@keyframes step-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(2, 89, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(2, 89, 102, 0); }
+}
+
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+
+.animate-step-pulse {
+  animation: step-pulse 2s infinite;
+}
+
+.dot-bounce-1 {
+  animation: dot-bounce 1.4s infinite;
+  animation-delay: 0ms;
+}
+
+.dot-bounce-2 {
+  animation: dot-bounce 1.4s infinite;
+  animation-delay: 160ms;
+}
+
+.dot-bounce-3 {
+  animation: dot-bounce 1.4s infinite;
+  animation-delay: 320ms;
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-step-pulse,
+  .animate-pulse,
+  .animate-spin,
+  .dot-bounce-1,
+  .dot-bounce-2,
+  .dot-bounce-3 {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Form Element Overrides — Light Theme
+   ============================================================ */
+
+select option {
+  background-color: #FFFFFF;
+  color: var(--color-worley-text-primary);
+}
+
+/* Hide default appearance for select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Custom scrollbar for light theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F7FAFA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0AEC0;
+}
